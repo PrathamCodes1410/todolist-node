@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="box">
+    <h1 id="heading"><%= h1 %></h1>
+
+
+        <% if(ifyes == 0) {%>
+            <% for(let i = 0; i < tItem; i++){ %>
+                <form method="post" action="/customdelete">
+                    <div class="item">
+                        <input onChange = this.form.submit() name="checker" value="<%= aItem[i] %>" type="checkbox">
+                        <p><%= aItem[i]  %></p>
+                    </div>
+                </form>
+            <% } %>
+        <% } %>
+
+
+
+        <% if(ifyes == 1) {%>
+            <% for(let i = 0; i < tItem; i++){ %>
+                <form method="post" action="/delete">
+                    <div class="item">
+                        <input onChange = this.form.submit() name="checker" value="<%= aItem[i] %>" type="checkbox">
+                        <p><%= aItem[i]  %></p>
+                    </div>
+                </form>
+            <% } %>
+        <% } %>
+        <% if(ifyes == 1) {%>        
+            <form class="item" action="/" method="post">
+                <input class="i" placeholder="anything" name="input">
+                <button class="b" type="submit">+</button>
+            </form>
+        <% } %>
+        <% if(ifyes == 0) {%>        
+            <form class="item" action="/customadd" method="post">
+                <input class="i" placeholder="anything" name="input">
+                <input type="hidden" value="<%= h1 %>" name="listname">
+                <button class="b" type="submit">+</button>
+            </form>
+        <% } %>
+    
+    </div>
+</body>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+</html>
